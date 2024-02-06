@@ -1,0 +1,62 @@
+/*
+  SPACING SYSTEM (px)
+  2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+  FONT SIZE SYSTEM (px)
+  10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+*/
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%; //1rem = 10px
+}
+
+.text-success {
+  color: darkgreen;
+}
+
+$gap: 32px;
+$container-offset: (2 * 16px);
+$container-max-width: 400px;
+
+$desktop: 200px + (2 * $gap);
+$widescreen: 1152px + (2 * $gap);
+$fullhd: 1344px + (2 * $gap);
+
+.container {
+  flex-grow: 1;
+  margin: 0 auto;
+  position: relative;
+  width: auto;
+
+  + desktop {
+    max-width: $desktop - $container-offset;
+  }
+  + until-widescreen {
+    &.is-widescreen:not(.is-max-desktop) {
+      max-width: min($widescreen, $container-max-width) - $container-offset;
+    }
+  }
+  + until-fullhd {
+    &.is-fullhd:not(.is-max-desktop):not(.is-max-widescreen) {
+      max-width: min($fullhd, $container-max-width) - $container-offset;
+    }
+  }
+  + widescreen {
+    &:not(.is-max-desktop) {
+      max-width: min($widescreen, $container-max-width) - $container-offset;
+    }
+  }
+  + fullhd {
+    &:not(.is-max-desktop):not(.is-max-widescreen) {
+      max-width: min($fullhd, $container-max-width) - $container-offset;
+    }
+  }
+}
