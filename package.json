@@ -1,0 +1,19 @@
+{
+  "name": "found-dashboard",
+  "version": "1.0.0",
+  "description": "Found Dashboard with Bulma",
+  "main": "index.js",
+  "scripts": {
+    "watch-scss": "node-sass sass/main.scss css/style.css -w",
+    "compile-scss": "node-sass sass/main.scss css/style.css",
+    "live-server": "live-server",
+    "stand-up": "npm-run-all --parallel watch-scss live-server"
+  },
+  "author": "Gülşah Düzgün",
+  "license": "ISC",
+  "devDependencies": {
+    "bulma": "^0.9.4",
+    "node-sass": "^9.0.0",
+    "npm-run-all": "^4.1.5"
+  }
+}
